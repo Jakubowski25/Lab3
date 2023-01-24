@@ -9,24 +9,23 @@ def create_secure_password(password_length):
             if password_length < 8:
                 errors += 1
                 if errors > 1:
-                    return "Too many errors, exiting"
-                print("Password length should be at least 8 characters.")
+                    return "Zbyt dużo błędów, wyjście z programu"
+                print("Długośc hasła powinna wynosić minimum 8 znaków")
                 continue
             break
         except ValueError:
             errors += 1
             if errors > 1:
-                return "Too many errors, exiting"
-            print("Invalid input. Please enter a number.")
+                return "Zbyt dużo błędów, wyjście z programu"
+            print("złe dane, wpisz numer.")
 
-    # Create a list of allowed characters
+    
     allowed_chars = string.ascii_letters + string.digits + string.punctuation
-    # Create a password of the specified length
+   
     password = "".join(random.choices(allowed_chars, k=password_length))
 
-    # Verify that the password does not contain any dictionary words
-    # (this step is omitted for brevity and can be added as additional functionality)
+    
 
     return password
 
-print(create_secure_password(int(input("How long should be your password ?"))))
+print(create_secure_password(int(input("Jak długie ma być twoje hasło ?"))))
